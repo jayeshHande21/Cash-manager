@@ -10,7 +10,7 @@ button.addEventListener("click", CheckAmount);
 
 function CheckAmount()
 {
-    hideMessage()
+    hideMessage();
 
     if(billAmount.value > 0)
     {
@@ -20,7 +20,7 @@ function CheckAmount()
           
        }
        else{
-           errorMessage("DO You Wanna A Wash Plates")
+           errorMessage("Amount is less than Bill Amount")
        }
     } 
     else{
@@ -37,7 +37,7 @@ function errorMessage(msg){
 
 }
 function CalculateChange(AmountToBeReturn){
-    hideMessage()
+    
     for(let i = 0; i < avilabelNotes.length; i++){
         const Notes = Math.trunc( AmountToBeReturn / avilabelNotes[i]);
 
