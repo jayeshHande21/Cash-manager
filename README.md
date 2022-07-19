@@ -7,11 +7,13 @@ Cash given and we will provide you minimum number of notes to be returned.
 
 
 ## language Used : 
-<li>
+
  
  -HTML5
+ 
  -CSS3
+ 
  -JavaScript
  
- </li>
+
 
