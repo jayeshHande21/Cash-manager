@@ -2,18 +2,18 @@
 
 ## About :
 
-This is simple cash registor calculator.You have to just Enter the bill amount, <br>
-Cash given and we will provide you minimum number of notes to be returned.
+- This is simple cash registor calculator.
+- You have to just Enter the bill amount and cash given we will provide you minimum number of notes to be returned.
+- You must check this once.
 
 
-## language Used : 
-
+### language Used : 
  
- -HTML5
+ - HTML5
  
- -CSS3
+ - CSS3
  
- -JavaScript
+ - JavaScript
  
 
 
