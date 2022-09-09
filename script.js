@@ -33,10 +33,10 @@ function CheckAmount() {
       const AmountToBeReturn = cashGiven.value - billAmount.value;
       CalculateChange(AmountToBeReturn);
     } else {
-      errorMessage("Amount is less than Bill Amount");
+      errorMessage("Given Amount is less than Bill Amount");
     }
   } else {
-    errorMessage("Bill amount should be greater than zero");
+    errorMessage("Bill Amount should be greater than Zero");
   }
 }
 
