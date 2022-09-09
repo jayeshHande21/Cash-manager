@@ -32,6 +32,8 @@ function CheckAmount() {
     if (Number(cashGiven.value) > Number(billAmount.value)) {
       const AmountToBeReturn = cashGiven.value - billAmount.value;
       CalculateChange(AmountToBeReturn);
+    } else if (Number(cashGiven.value) == Number(billAmount.value)) {
+      errorMessage("No Return😍");
     } else {
       errorMessage("Given Amount is less than Bill Amount");
     }
