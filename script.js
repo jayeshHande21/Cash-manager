@@ -5,7 +5,7 @@ const NoOfNotes = document.querySelectorAll(".NoOfNotes");
 
 var message = document.querySelector("#error-message");
 
-const avilabelNotes = [2000, 500, 200, 100, 50, 20, 10, 5, 1];
+const avilabelNotes = [2000, 500, 100, 20, 10, 5, 1];
 
 function hideMessage() {
   message.style.display = "none";
@@ -28,12 +28,12 @@ function CalculateChange(AmountToBeReturn) {
 function CheckAmount() {
   hideMessage();
 
-  if (billAmount.value > 0) {
+  if (Number(billAmount.value) >= 0) {
     if (Number(cashGiven.value) > Number(billAmount.value)) {
       const AmountToBeReturn = cashGiven.value - billAmount.value;
       CalculateChange(AmountToBeReturn);
     } else if (Number(cashGiven.value) == Number(billAmount.value)) {
-      errorMessage("No Return😍");
+      errorMessage("No return");
     } else {
       errorMessage("Given Amount is less than Bill Amount");
     }
