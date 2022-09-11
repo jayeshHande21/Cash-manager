@@ -2,9 +2,14 @@ const billAmount = document.querySelector("#bill-amount");
 const cashGiven = document.querySelector("#cash-given");
 const button = document.querySelector("#check-button");
 const NoOfNotes = document.querySelectorAll(".NoOfNotes");
-// const nextContainer = document.querySelector(".next-container");
+const nextContainer = document.querySelector(".next-container");
 
+nextContainer.style.display = "none";
 var message = document.querySelector("#error-message");
+
+billAmount.addEventListener("input", () => {
+  nextContainer.style.display = "block";
+});
 
 cashGiven.addEventListener("input", () => {
   billAmount.disabled = "true";
