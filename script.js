@@ -23,6 +23,9 @@ function hideMessage() {
 function errorMessage(msg) {
   message.style.display = "block";
   message.innerText = msg;
+  NoOfNotes.forEach((temp) => {
+    temp.innerHTML = "";
+  });
 }
 
 function CheckAmount() {
