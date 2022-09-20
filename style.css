@@ -1,36 +1,52 @@
-* {
+@import url("https://fonts.googleapis.com/css2?family=Marmelad&display=swap");
+
+:root {
+  --primary-color: #eed7a5;
+  --secondary-color: #585050;
 }
 body {
-  background-color: #f1d2e5;
+  text-align: center;
+  font-family: "Marmelad", sans-serif;
+  display: block;
+  margin: auto;
+  background-color: var(--primary-color);
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 65%;
-  text-align: center;
-  margin: auto;
-  background-color: rgba(0, 0, 0, 0.07);
-  padding: 2rem;
-  border-radius: 2rem;
+#billamount,
+#cashgiven {
+  background-color: white;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border: 1px var(--secondary-color) solid;
+  height: 2rem;
 }
-#cash-given {
-  width: 100%;
+
+button {
+  font-family: "Marmelad", sans-serif;
+  background-color: var(--secondary-color);
+  color: white;
+  height: 2rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  width: 5rem;
+  font-weight: bold;
 }
-#check-button {
-  color: rgb(255, 255, 255);
-  margin-top: 20px;
-  padding: 0.2rem;
-  width: 55%;
-  background-color: rgb(149, 126, 156);
-  border-radius: 2rem;
-  cursor: pointer;
-}
+
 table {
+  width: 50%;
+  text-align: justify;
+  border-collapse: collapse;
   margin: auto;
-  padding: 2rem;
 }
+table caption {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 th,
 td {
-  padding: 5px;
+  border: 2px solid var(--secondary-color);
+  width: 0%;
+  border-collapse: collapse;
+  padding: 0.4rem;
 }

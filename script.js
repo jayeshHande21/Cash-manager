@@ -1,57 +1,63 @@
-const billAmount = document.querySelector("#bill-amount");
-const cashGiven = document.querySelector("#cash-given");
-const button = document.querySelector("#check-button");
-const NoOfNotes = document.querySelectorAll(".NoOfNotes");
-const nextContainer = document.querySelector(".next-container");
+var billAmount = document.querySelector("#billamount");
+var cashGiven = document.querySelector("#cashgiven");
+var btnCheck = document.querySelector("#check-button");
+var btnBack = document.querySelector("#back-button");
+var btnNext = document.querySelector("#nextbtn");
+var error = document.querySelector("#error-msg");
 
-nextContainer.style.display = "none";
-var message = document.querySelector("#error-message");
+var notesAvailable = document.querySelectorAll(".availableNotes");
 
-billAmount.addEventListener("input", () => {
-  nextContainer.style.display = "block";
-});
+var NotesTable = [2000, 500, 100, 20, 10, 5, 1];
 
-cashGiven.addEventListener("input", () => {
-  billAmount.disabled = "true";
-});
-const avilabelNotes = [2000, 500, 100, 20, 10, 5, 1];
-
-function hideMessage() {
-  message.style.display = "none";
-}
-
-function errorMessage(msg) {
-  message.style.display = "block";
-  message.innerText = msg;
-  NoOfNotes.forEach((temp) => {
-    temp.innerHTML = "";
+function showError(errorMessage) {
+  error.style.display = "block";
+  error.innerHTML = errorMessage;
+  notesAvailable.forEach((cell) => {
+    cell.innerHTML = "";
   });
 }
 
-function CheckAmount() {
-  hideMessage();
+function calculate(billAmountValue, cashGivenValue) {
+  error.style.display = "none";
+  document.querySelector("#third-container").style.display = "block";
+  var amountToBeReturned = cashGivenValue - billAmountValue;
+  for (let i = 0; i < NotesTable.length; i++) {
+    var noOfNotes = Math.trunc(amountToBeReturned / NotesTable[i]);
+    notesAvailable[i].innerHTML = noOfNotes;
+    amountToBeReturned = amountToBeReturned - noOfNotes * NotesTable[i];
+  }
+}
+function checkCashGiven() {
+  var cashGivenValue = Number(cashGiven.value);
+  var billAmountValue = Number(billAmount.value);
 
-  if (Number(billAmount.value) >= 0) {
-    if (Number(cashGiven.value) > Number(billAmount.value)) {
-      const AmountToBeReturn = cashGiven.value - billAmount.value;
-      CalculateChange(AmountToBeReturn);
-    } else if (Number(cashGiven.value) == Number(billAmount.value)) {
-      errorMessage("No return");
-    } else {
-      errorMessage("Given Amount is less than Bill Amount");
-    }
+  if (cashGivenValue <= 0) showError("Cash Given should be greater than 0");
+  else if (cashGivenValue < billAmountValue)
+    showError("Cash Given should be atleast equal to Bill Amount");
+  else calculate(billAmountValue, cashGivenValue);
+}
+
+function backAction() {
+  console.log("clicked");
+  billAmount.disabled = false;
+  btnNext.style.display = "block";
+  document.querySelector("#second-container").style.display = "none";
+  document.querySelector("#third-container").style.display = "none";
+}
+
+function checkBillAmount() {
+  var billAmountValue = billAmount.value;
+  if (billAmountValue <= 0) {
+    showError("Bill Amount should be greater than 0");
   } else {
-    errorMessage("Bill Amount should be greater than Zero");
+    btnNext.style.display = "none";
+    billAmount.disabled = true;
+    document.querySelector("#second-container").style.display = "block";
   }
 }
 
-function CalculateChange(AmountToBeReturn) {
-  for (let i = 0; i < avilabelNotes.length; i++) {
-    const Notes = Math.trunc(AmountToBeReturn / avilabelNotes[i]);
+btnNext.addEventListener("click", checkBillAmount);
 
-    AmountToBeReturn = AmountToBeReturn % avilabelNotes[i];
-    NoOfNotes[i].innerText = Notes;
-  }
-}
+btnCheck.addEventListener("click", checkCashGiven);
 
-button.addEventListener("click", CheckAmount);
+btnBack.addEventListener("click", backAction);
