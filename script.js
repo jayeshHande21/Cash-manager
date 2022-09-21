@@ -34,6 +34,8 @@ function checkCashGiven() {
   if (cashGivenValue <= 0) showError("Cash Given should be greater than 0");
   else if (cashGivenValue < billAmountValue)
     showError("Cash Given should be atleast equal to Bill Amount");
+  else if (cashGivenValue == billAmountValue)
+    showError("No need to give change.");
   else calculate(billAmountValue, cashGivenValue);
 }
 
